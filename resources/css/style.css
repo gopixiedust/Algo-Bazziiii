@@ -566,3 +566,40 @@ main {
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
   transform: translateY(-3px);
 }
+
+@media only screen and (max-width: 1200px) {
+  /*Tablets [601px -> 1200px]*/
+  .search-box {
+    max-width: 400px;
+  }
+  .search {
+    width: 50vh;
+    margin: 5px auto;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  /*Big smartphones [426px -> 600px]*/
+
+  .search-box {
+    max-width: 350px;
+  }
+  .search {
+    width: 40vh;
+    margin: 5px auto;
+  }
+}
+@media only screen and (max-width: 425px) {
+  /*Small smartphones [325px -> 425px]*/
+
+  .search-box {
+    max-width: 200px;
+  }
+  .search-box input {
+    font-size: 15px;
+  }
+  .search {
+    width: 30vh;
+    margin: 5px auto;
+  }
+}
