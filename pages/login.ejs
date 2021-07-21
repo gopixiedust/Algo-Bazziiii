@@ -13,12 +13,12 @@
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css"
     />
-    <link rel="stylesheet" href="../resources/css/login.css" />
+    <link rel="stylesheet" href="/css/login.css" />
   </head>
   <body>
     <!-- partial:index.partial.html -->
-    <a href="../index.html" class="logo">
-      <img src="../resources/imageedit_8_4278661780.png" alt="" />
+    <a href="/" class="logo">
+      <img src="/imageedit_8_4278661780.png" alt="" />
     </a>
 
     <div class="section">
@@ -69,15 +69,22 @@
                           <a href="#0" class="link">Forgot your password?</a>
                         </p>
 
-                        <p class="mb-0 mt-4 text-center alt">
-                          <a href="#" class="mt-4"><i class="uil uil-google"></i></a>
-                          <a href="#"class=" mt-4"><i class="uil uil-facebook-f"></i></a>
-                          <a href="#"class="mt-4"><i class="uil uil-github-alt"></i></a>
-                          
-                        </p>
                       </div>
+                      <div>
+                        <%if (name) { %>
+                           <%= name %> Loggedout succesfully
+                          <% } %>
+                      </div>
+                      <p class="mb-0 mt-4 text-center alt">
+                        <a href="/auth/google" class="mt-4"><i class="uil uil-google"></i></a>
+                        <a href="#"class=" mt-4"><i class="uil uil-facebook-f"></i></a>
+                        <a href="#"class="mt-4"><i class="uil uil-github-alt"></i></a>
+                        
+                      </p>
+                      
                     </div>
                   </div>
+                  
                   <div class="card-back">
                     <div class="center-wrap">
                       <div class="section text-center">
@@ -116,13 +123,18 @@
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
                         <a href="#" class="btn mt-4">submit</a>
+                        <div>
+                          <%if (name) { %>
+                             <%= name %> Loggedout succesfully
+                            <% } %>
+                        </div>
                       </div>
                       <p class="mb-0 mt-4 text-center alt">
-                          <a href="#" class="mt-4"><i class="uil uil-google"></i></a>
-                          <a href="#"class=" mt-4"><i class="uil uil-facebook-f"></i></a>
-                          <a href="#"class="mt-4"><i class="uil uil-github-alt"></i></a>
-                          
-                        </p>
+                        <a href="/auth/google" class="mt-4"><i class="uil uil-google"></i></a>
+                        <a href="#"class=" mt-4"><i class="uil uil-facebook-f"></i></a>
+                        <a href="#"class="mt-4"><i class="uil uil-github-alt"></i></a>
+                        
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -133,6 +145,6 @@
       </div>
     </div>
     <!-- partial -->
-    <script src="../resources/js/login.js"></script>
+    <script src="/js/login.js"></script>
   </body>
 </html>
