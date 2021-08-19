@@ -4,6 +4,7 @@ require('dotenv').config();
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser=require('body-parser')
+const fetch=require('node-fetch')
 app=Express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,7 +28,18 @@ app.get('/login',(req,res)=>{
     res.render('login',{name:0})
 })
 app.get('/',(req,res)=>{
-    res.render('index')
+    res.render('index',{'value':0})
+})
+
+
+app.post('/',(req,res)=>{
+    const ans=req.body.search
+    fetch(`http://localhost:8000/${ans}`)
+    .then(result => result.json())
+    .then(json => {
+        const data=String(json.value)
+        res.render('index',{'value':data})
+    })
 })
 
 PORT=process.env.PORT || 3000

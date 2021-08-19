@@ -88,12 +88,17 @@
 
     <main>
     <section class="search">
-        <form class="search-box">
-            <input type="search" placeholder="Type here...">
+        <form class="search-box" method="POST" action="/">
+            <input type="search" name="search" required placeholder="Type here...">
+            <input type="submit" value="">
         </form>
     </section>
     <section class="gauge">
-        <div class="chart-gauge"></div>
+        <div class="chart-gauge" id="value" >
+          <%if (value) { %>
+            <%= value %> 
+           <% } %>
+        </div>
     </section>
  
       </main>
@@ -102,5 +107,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="./js/script.js"></script>
+    <script>
+      const abc=document.getElementById('value')
+      console.log(abc.innerText)
+    </script>
   </body>
 </html>
