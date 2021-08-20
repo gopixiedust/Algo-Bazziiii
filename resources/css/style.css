@@ -1,23 +1,50 @@
-/* Please ❤ this if you like it! */
-
-@import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext");
-
-/* #Primary
-================================================== */
-
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext);
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+::-webkit-scrollbar-thumb {
+  background: #3e3e3e;
+  border: 0 solid transparent;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3e3e3e;
+}
+::-webkit-scrollbar-track:hover {
+  background: 0 0;
+}
+::-webkit-scrollbar-thumb:active {
+  background: 0 0;
+}
+::-webkit-scrollbar-track:active {
+  background: 0 0;
+}
+::-webkit-scrollbar-track {
+  background: 0 0;
+  border: 0 none transparent;
+  border-radius: 0;
+}
+::-webkit-scrollbar-corner {
+  background: 0 0;
+}
 body {
-  font-family: "Poppins", sans-serif;
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg) !important;
+  background-color: #1e1f28;
+  font-family: Poppins, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
   color: #212112;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg");
   background-position: center;
   background-repeat: repeat;
   background-size: 7%;
-  background-color: #fff;
   overflow-x: hidden;
-  transition: all 200ms linear;
+  transition: all 0.2s linear;
 }
 ::selection {
   color: #fff;
@@ -27,10 +54,6 @@ body {
   color: #fff;
   background-color: #9865e6;
 }
-
-/* #Navigation
-================================================== */
-
 .start-header {
   opacity: 1;
   transform: translateY(0);
@@ -77,7 +100,7 @@ body {
 }
 .navbar-toggler:active,
 .navbar-toggler:focus {
-  outline: none;
+  outline: 0;
 }
 .navbar-light .navbar-toggler-icon {
   width: 24px;
@@ -85,7 +108,7 @@ body {
   background-image: none;
   position: relative;
   border-bottom: 1px solid #000;
-  transition: all 300ms linear;
+  transition: all 0.3s linear;
 }
 .navbar-light .navbar-toggler-icon:after,
 .navbar-light .navbar-toggler-icon:before {
@@ -97,7 +120,7 @@ body {
   left: 0;
   content: "";
   z-index: 2;
-  transition: all 300ms linear;
+  transition: all 0.3s linear;
 }
 .navbar-light .navbar-toggler-icon:after {
   top: 8px;
@@ -114,10 +137,10 @@ body {
 .nav-link {
   color: #212121 !important;
   font-weight: 500;
-  transition: all 200ms linear;
+  transition: all 0.2s linear;
 }
 .nav-item:hover .nav-link {
-  color: goldenrod !important;
+  color: #daa520 !important;
 }
 .nav-item.active .nav-link {
   color: #777 !important;
@@ -136,7 +159,7 @@ body {
   content: "";
   background-color: gold;
   opacity: 0;
-  transition: all 200ms linear;
+  transition: all 0.2s linear;
 }
 .nav-item:hover:after {
   bottom: 0;
@@ -147,15 +170,11 @@ body {
 }
 .nav-item {
   position: relative;
-  transition: all 200ms linear;
+  transition: all 0.2s linear;
 }
-
-/* #Primary style
-================================================== */
-
 .bg-light {
   background-color: #fff !important;
-  transition: all 200ms linear;
+  transition: all 0.2s linear;
 }
 .section {
   position: relative;
@@ -190,17 +209,17 @@ p {
   padding-top: 10px;
   opacity: 1;
   transform: translate(0);
-  transition: all 300ms linear;
-  transition-delay: 1700ms;
+  transition: all 0.3s linear;
+  transition-delay: 1.7s;
 }
 body.hero-anime p {
   opacity: 0;
   transform: translateY(40px);
-  transition-delay: 1700ms;
+  transition-delay: 1.7s;
 }
 h1 span {
   display: inline-block;
-  transition: all 300ms linear;
+  transition: all 0.3s linear;
   opacity: 1;
   transform: translate(0);
 }
@@ -245,34 +264,34 @@ body.hero-anime h1 span:nth-child(10) {
   transform: translateY(-20px);
 }
 h1 span:nth-child(1) {
-  transition-delay: 1000ms;
+  transition-delay: 1s;
 }
 h1 span:nth-child(2) {
-  transition-delay: 700ms;
+  transition-delay: 0.7s;
 }
 h1 span:nth-child(3) {
-  transition-delay: 900ms;
+  transition-delay: 0.9s;
 }
 h1 span:nth-child(4) {
-  transition-delay: 800ms;
+  transition-delay: 0.8s;
 }
 h1 span:nth-child(5) {
-  transition-delay: 1000ms;
+  transition-delay: 1s;
 }
 h1 span:nth-child(6) {
-  transition-delay: 700ms;
+  transition-delay: 0.7s;
 }
 h1 span:nth-child(7) {
-  transition-delay: 900ms;
+  transition-delay: 0.9s;
 }
 h1 span:nth-child(8) {
-  transition-delay: 800ms;
+  transition-delay: 0.8s;
 }
 h1 span:nth-child(9) {
-  transition-delay: 600ms;
+  transition-delay: 0.6s;
 }
 h1 span:nth-child(10) {
-  transition-delay: 700ms;
+  transition-delay: 0.7s;
 }
 body.hero-anime h1 span:nth-child(11) {
   opacity: 0;
@@ -295,25 +314,25 @@ body.hero-anime h1 span:nth-child(15) {
   transform: translateY(50px);
 }
 h1 span:nth-child(11) {
-  transition-delay: 1300ms;
+  transition-delay: 1.3s;
 }
 h1 span:nth-child(12) {
-  transition-delay: 1500ms;
+  transition-delay: 1.5s;
 }
 h1 span:nth-child(13) {
-  transition-delay: 1400ms;
+  transition-delay: 1.4s;
 }
 h1 span:nth-child(14) {
-  transition-delay: 1200ms;
+  transition-delay: 1.2s;
 }
 h1 span:nth-child(15) {
-  transition-delay: 1450ms;
+  transition-delay: 1.45s;
 }
-#switch,
-#circle {
+#circle,
+#switch {
   cursor: pointer;
-  -webkit-transition: all 300ms linear;
-  transition: all 300ms linear;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
 }
 #switch {
   width: 60px;
@@ -327,13 +346,13 @@ h1 span:nth-child(15) {
   text-align: center;
   opacity: 1;
   transform: translate(0);
-  transition: all 300ms linear;
-  transition-delay: 1900ms;
+  transition: all 0.3s linear;
+  transition-delay: 1.9s;
 }
 body.hero-anime #switch {
   opacity: 0;
   transform: translateY(40px);
-  transition-delay: 1900ms;
+  transition-delay: 1.9s;
 }
 #circle {
   position: absolute;
@@ -361,13 +380,13 @@ body.hero-anime #switch {
   display: block;
   padding: 0;
   margin: 0;
-  transition: all 200ms linear;
+  transition: all 0.2s linear;
 }
 .nav-item.show .dropdown-menu {
   opacity: 1;
   visibility: visible;
   max-height: 999px;
-  transform: translate3d(0, 0px, 0);
+  transform: translate3d(0, 0, 0);
 }
 .dropdown-menu {
   padding: 10px !important;
@@ -379,24 +398,22 @@ body.hero-anime #switch {
   border: none;
   border-radius: 3px;
   box-shadow: 0 5px 10px 0 rgba(138, 155, 165, 0.15);
-  transition: all 200ms linear;
+  transition: all 0.2s linear;
 }
 .dropdown-toggle::after {
   display: none;
 }
-
 .dropdown-item {
   padding: 3px 15px;
   color: #212121;
   border-radius: 2px;
-  transition: all 200ms linear;
+  transition: all 0.2s linear;
 }
-.dropdown-item:hover,
-.dropdown-item:focus {
+.dropdown-item:focus,
+.dropdown-item:hover {
   color: #fff;
   background-color: rgba(255, 217, 0, 0.753);
 }
-
 body.dark {
   color: #fff;
   background-color: #1f2029;
@@ -408,11 +425,11 @@ body.dark h1 {
   color: #fff;
 }
 body.dark h1 span {
-  transition-delay: 0ms !important;
+  transition-delay: 0s !important;
 }
 body.dark p {
   color: #fff;
-  transition-delay: 0ms !important;
+  transition-delay: 0s !important;
 }
 body.dark .bg-light {
   background-color: #14151a !important;
@@ -447,10 +464,6 @@ body.dark .navbar-light .navbar-toggler-icon:before {
 body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   border-color: transparent;
 }
-
-/* #Media
-================================================== */
-
 @media (max-width: 767px) {
   h1 {
     font-size: 38px;
@@ -481,7 +494,7 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     border: none;
     background-color: #000;
     vertical-align: 0;
-    transition: all 200ms linear;
+    transition: all 0.2s linear;
   }
   .dropdown-toggle[aria-expanded="true"]::after {
     transform: rotate(90deg);
@@ -491,7 +504,7 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     padding: 0 !important;
     background-color: transparent;
     box-shadow: none;
-    transition: all 200ms linear;
+    transition: all 0.2s linear;
   }
   .dropdown-toggle[aria-expanded="true"] + .dropdown-menu {
     margin-top: 10px !important;
@@ -508,10 +521,6 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     box-shadow: none;
   }
 }
-
-/* #Link to page
-================================================== */
-
 .logo {
   position: absolute;
   bottom: 30px;
@@ -529,112 +538,4 @@ body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 body.dark .logo img {
   filter: brightness(100%);
-}
-
-main {
-  padding-top: 25vh;
-}
-
-.search {
-  /* display:block; */
-  width: 80vh;
-  margin: 5px auto;
-}
-
-.search-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 16px;
-  overflow: hidden;
-  width: 100%;
-  max-width: 600px;
-  transition: 0.4s;
-  margin-bottom: 20px;
-  /* min-width: 120px; */
-}
-.search-box input {
-  display: block;
-  appearance: none;
-  outline: none;
-  border: none;
-  background-color: #c1bdc7;
-  width: 100%;
-  padding: 16px;
-  font-size: 20px;
-}
-.search-box:focus-within {
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-  transform: translateY(-3px);
-}
-
-@media only screen and (max-width: 1200px) {
-  /*Tablets [601px -> 1200px]*/
-  .gauge{
-  transform: scale(1.05);
-}
-  .search-box {
-    max-width: 400px;
-  }
-  .search {
-    width: 50vh;
-    margin: 5px auto;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  /*Big smartphones [426px -> 600px]*/
-.gauge{
-  transform: scale(0.9);
-}
-  .search-box {
-    max-width: 350px;
-    min-width: 200px;
-    margin-top: 6vh;
-  }
-  .search {
-    width: 40vh;
-    margin: 5px auto;
-  }
-}
-@media only screen and (max-width: 425px) {
-  /*Small smartphones [325px -> 425px]*/
-.gauge{
-  transform: scale(0.6);
-}
-  .search-box {
-    max-width: 200px;
-    min-width: 120px;
-    margin-top: 8vh;
-  }
-  .search-box input {
-    font-size: 15px;
-  }
-  .search {
-    width: 30vh;
-    margin: 5px auto;
-  }
-}
-
-/* gauge */
-.chart-gauge {
-  width: 400px;
-  margin: 3vh auto;
-}
-
-.chart-color1 {
-  fill: #7DEDFF;
-}
-
-.chart-color2 {
-  fill: #67B0FF;
-}
-
-.chart-color3 {
-  fill: #2C40D0
-}
-
-.needle,.needle-center{
-  z-index: 100;
-  fill: #114467;
 }

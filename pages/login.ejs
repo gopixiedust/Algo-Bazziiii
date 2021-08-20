@@ -4,37 +4,96 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login-Page</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
     />
     <link
       rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css"
+      type="text/css"
+      href="/css/style.css"
     />
-    <link rel="stylesheet" href="/css/login.css" />
+    <link
+  rel="stylesheet"
+  href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css"
+/><link
+  rel="stylesheet"
+  type="text/css"
+  href="/css/login.css"
+/>
+    <link rel="stylesheet" type="text/css" href="/css/index.css" />
   </head>
-  <body>
-    <!-- partial:index.partial.html -->
-    <a href="/" class="logo">
-      <img src="/imageedit_8_4278661780.png" alt="" />
-    </a>
-
+  <body class="dark">
+    <nav class="hero-anime">
+      <div class="navigation-wrap bg-light start-header start-style">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <nav class="navbar navbar-expand-md navbar-light">
+                <a class="navbar-brand" href="/"
+                  ><img
+                    src="/images/imageedit_8_4278661780.png"
+                    width="60px"
+                    alt="" /></a
+                ><button
+                  class="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div
+                  class="collapse navbar-collapse"
+                  id="navbarSupportedContent"
+                >
+                  <ul class="navbar-nav ml-auto py-4 py-md-0">
+                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                      <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+                      <a
+                        class="nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                        href="#"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        >Strategies</a
+                      >
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Strat 1</a>
+                        <a class="dropdown-item" href="#">Strat 2</a>
+                        <a class="dropdown-item" href="#">Strat 3</a>
+                        <a class="dropdown-item" href="#">Strat 4</a>
+                      </div>
+                    </li>
+                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                      <a class="nav-link" href="/about">Contributers</a>
+                    </li>
+                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                      <a class="nav-link" href="/login">Login</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
     <div class="section">
       <div class="container">
         <div class="row full-height justify-content-center">
           <div class="col-12 text-center align-self-center py-5">
             <div class="section pb-5 pt-5 pt-sm-2 text-center">
-              <h6 class="mb-0 pb-3">
+              <h6 class="mb-0 pb-3" style="padding-top: 8vh">
                 <span>Log In </span><span>Sign Up</span>
               </h6>
-              <input
-                class="checkbox"
-                type="checkbox"
-                id="reg-log"
-                name="reg-log"
-              />
+              <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
               <label for="reg-log"></label>
               <div class="card-3d-wrap mx-auto">
                 <div class="card-3d-wrapper">
@@ -68,23 +127,25 @@
                         <p class="mb-0 mt-4 text-center">
                           <a href="#0" class="link">Forgot your password?</a>
                         </p>
-
+                        <p class="mb-0 mt-4 text-center alt">
+                          <a href="/auth/google" class="mt-4"
+                            ><i class="uil uil-google"></i
+                          ></a>
+                          <a href="#" class="mt-4"
+                            ><i class="uil uil-facebook-f"></i
+                          ></a>
+                          <a href="#" class="mt-4"
+                            ><i class="uil uil-github-alt"></i
+                          ></a>
+                        </p>
+                        <div>
+                          <%if (name) { %>
+                             <%= name %> Loggedout succesfully
+                            <% } %>
+                        </div>
                       </div>
-                      <div>
-                        <%if (name) { %>
-                           <%= name %> Loggedout succesfully
-                          <% } %>
-                      </div>
-                      <p class="mb-0 mt-4 text-center alt">
-                        <a href="/auth/google" class="mt-4"><i class="uil uil-google"></i></a>
-                        <a href="#"class=" mt-4"><i class="uil uil-facebook-f"></i></a>
-                        <a href="#"class="mt-4"><i class="uil uil-github-alt"></i></a>
-                        
-                      </p>
-                      
                     </div>
                   </div>
-                  
                   <div class="card-back">
                     <div class="center-wrap">
                       <div class="section text-center">
@@ -123,18 +184,21 @@
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
                         <a href="#" class="btn mt-4">submit</a>
-                        <div>
-                          <%if (name) { %>
-                             <%= name %> Loggedout succesfully
-                            <% } %>
-                        </div>
                       </div>
                       <p class="mb-0 mt-4 text-center alt">
                         <a href="/auth/google" class="mt-4"><i class="uil uil-google"></i></a>
-                        <a href="#"class=" mt-4"><i class="uil uil-facebook-f"></i></a>
-                        <a href="#"class="mt-4"><i class="uil uil-github-alt"></i></a>
-                        
+                        <a href="#" class="mt-4"
+                          ><i class="uil uil-facebook-f"></i
+                        ></a>
+                        <a href="#" class="mt-4"
+                          ><i class="uil uil-github-alt"></i
+                        ></a>
                       </p>
+                      <div>
+                        <%if (name) { %>
+                           <%= name %> Loggedout succesfully
+                          <% } %>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -144,7 +208,9 @@
         </div>
       </div>
     </div>
-    <!-- partial -->
-    <script src="/js/login.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.3.3/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   </body>
 </html>

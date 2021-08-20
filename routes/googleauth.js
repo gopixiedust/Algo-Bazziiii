@@ -47,7 +47,7 @@ auth.get("/google", passport.authenticate("google", {
 
 auth.get("/google/redirect",passport.authenticate("google"),(req,res)=>{
     main.check=1;
-    res.render("render");
+    res.redirect('/auth/portfolio')
 });
 
 auth.get("/logout", (req, res) => {
@@ -57,9 +57,9 @@ auth.get("/logout", (req, res) => {
 
 
 
-auth.get('/check',(req,res)=>{
+auth.get('/portfolio',(req,res)=>{
   if(main.check!== 0){
-    res.render('new',{username:req.user.name})
+    res.render('portfolio',{username:req.user.name,email:req.user.email})
   }else{ 
     res.send("Not allowed to enter :(")
   }
