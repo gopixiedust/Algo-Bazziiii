@@ -5,9 +5,6 @@ views = Blueprint('views', __name__)
 def index():
     return render_template('index.html')
 
-@views.route('/login')
-def login():
-    return render_template('login.html')
 
 @views.route('/about')
 def about():
