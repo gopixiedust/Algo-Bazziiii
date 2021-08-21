@@ -91,7 +91,8 @@
     totalPercent,
     width;
 
-    const values = [,0.166,0.500,0.833]
+    const values = [0.166,0.500,0.833]
+
   percent = values[1]
  
 

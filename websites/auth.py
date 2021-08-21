@@ -20,8 +20,8 @@ def password_check(passwd):
 		flash('length should be at least 6 ', 'error')
 		val = False
 		
-	if len(passwd) > 20:
-		flash('length should be not be greater than 8 ', 'error')
+	if len(passwd) < 8:
+		flash('Password Length should be greater than 8 ', 'error')
 		val = False
 		
 	if not any(char.isdigit() for char in passwd):
@@ -37,7 +37,7 @@ def password_check(passwd):
 		val = False
 		
 	if not any(char in SpecialSym for char in passwd):
-		flash('Password should have at least one of the symbols $@# ', 'error')
+		flash('Password should have at least one of the symbols " $ @ # " ', 'error')
 		val = False
 	if val:
 		return val
