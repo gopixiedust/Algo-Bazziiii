@@ -1,0 +1,68 @@
+{% extends "basic.html"%} {%block head%}
+<title>User Portfolio</title>
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static',filename='styles/portfolio.css')}}"
+/>
+
+{%endblock%} {% block content%}
+<body>
+  <div class="container">
+    <div class="profile-header">
+      <div class="profile-img">
+        <img src="../static/images/5.jpg" width="200" alt="Profile Image" />
+      </div>
+      <div class="profile-nav-info">
+        <h3 class="user-name">Vision Tonyson</h3>
+        <div class="email">
+          <p>wandavision@gmail.com</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-bd">
+      <div class="left-side">
+        <div class="profile-side">
+         
+          <div class="user-bio">
+            <h3>Bio</h3>
+            <p class="bio">
+              Lorem ipsum dolor sit amet, hello how consectetur adipisicing
+              elit. Sint consectetur provident magni yohoho consequuntur,
+              voluptatibus ghdfff exercitationem at quis similique. Optio,
+              amet!
+            </p>
+          </div>
+        </div>
+      </div>
+        <div class="profile-body">
+          <div class="card">
+          
+            <p>
+              Lorem ipsum dolor sit amet,
+            </p>
+          </div>
+         <div class="card">
+            
+            <p>
+              Lorem ipsum dolor sit amet,
+            </p>
+         </div>
+         <div class="card">
+            
+          <p>
+            Lorem ipsum dolor sit amet,
+          </p>
+       </div>
+          
+         </div>
+      </div>
+    </div>
+  </div>
+  <!-- partial -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- <script src="../static/scripts/portfolio.js"></script> -->
+</body>
+{%endblock%}

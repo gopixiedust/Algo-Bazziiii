@@ -1,0 +1,37 @@
+{% extends "basic.html"%} {% block head%}<title>Algo</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/index.css')}}" /> {% endblock %} {%
+block content%}
+
+<body>
+    <div class="section-fluid-main">
+        <div class="section-row">
+            <div class="section-col">
+                <div class="section">
+                    <div class="section-in"> <a href="/stock"><img
+                                src="../static/images/pexels-pixabay-210607 (1)-min.jpg" alt="" />
+                            <div class="info">
+                                <p>Stock Search</p>
+                            </div>
+                            <div class="section-foot">
+                                <p> Search for the Info of a Stock</p>
+                            </div>
+                    </div> </a>
+                </div>
+            </div>
+            <div class="section-col">
+                <div class="section">
+                    <div class="section">
+                        <div class="section-in"> <a href="/nifty"><img
+                                    src="../static/images/pexels-markus-spiske-1089438 (1)-min.jpg" alt="" />
+                                <div class="info">
+                                    <p>Nifty</p>
+                                </div>
+                                <div class="section-foot">
+                                    <p> See the current Standing of Nifty 50 and Predictions for the next day</p>
+                                </div>
+                        </div> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body> {%endblock%}
