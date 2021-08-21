@@ -1,17 +1,21 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from datetime import  date, timedelta
+from datetime import  date
+from dateutil.relativedelta import relativedelta
 from jugaad_data.nse import stock_df
 import pandas as pd
 import numpy as np
 from nsetools import Nse
+import plotly.graph_objects as go
+
+
 views = Blueprint('views', __name__)
 nse = Nse()
 
-def stonks(symbol):        
+def stonks(df):        
     returnVal=0
     
-    df = stock_df(symbol=symbol, from_date=date.today()-timedelta(days=200),
-                to_date=date.today(), series="EQ")
+    # df = stock_df(symbol=symbol, from_date=date.today()-relativedelta(months=6),
+    #             to_date=date.today(), series="EQ")
     df.drop(['SERIES', 
         'VWAP', '52W H', '52W L', 'VOLUME', 'VALUE', 'NO OF TRADES', 'SYMBOL'],inplace=True,axis=1)
     df=df[::-1]
@@ -59,7 +63,15 @@ def stonks(symbol):
         returnVal+=1
     return returnVal
 
-
+def chart(df):
+    fig = go.Figure(data=[go.Candlestick(x=df['DATE'],
+                open=df['OPEN'], high=df['HIGH'],
+                low=df['LOW'], close=df['CLOSE'])
+                     ])
+   
+    fig.update_layout(xaxis_rangeslider_visible=True)
+    fig.show()
+    
 @views.route('/')
 def index():
     return render_template('index.html')
@@ -73,6 +85,7 @@ def about():
 def stock():
     query=""
     data=pd.DataFrame()
+    res=-1
     if request.method == 'POST':
         query=request.form.get('query')
         print(query)
@@ -82,13 +95,17 @@ def stock():
             flash('Invalid Stock Code',category='error')
             
         elif nse.is_valid_code(query)==True:
-            data=stock_df(symbol=query, from_date=date.today()-timedelta(days=10),to_date=date.today(), series="EQ")
-            res=stonks(query)
+            data=stock_df(symbol=query, from_date=date.today()-relativedelta(months=6),to_date=date.today(), series="EQ")
+            chart(data)
+            res=stonks(data)
+            data=data[:1]
+            
+           
             print(res)
 
         
     
-    return render_template('stockstats.html',query=query,data=data.to_html(),res=res)
+    return render_template('stockstats.html',query=query,res=res,data=data.to_html())
 
 
 @views.route('/nifty')

@@ -61,6 +61,8 @@
   // });
 
 // gauge
+var res=document.getElementById("hidden").textContent
+console.log(res)
 
 (function () {
   var Needle,
@@ -91,9 +93,14 @@
     totalPercent,
     width;
 
-    const values = [0.166,0.500,0.833]
-
-  percent = values[1]
+    const values = [0.166,0.166,0.500,0.833];
+  
+    
+if (res==-1){
+percent=0
+}
+else
+  percent = values[res]
  
 
   barWidth = 60;
