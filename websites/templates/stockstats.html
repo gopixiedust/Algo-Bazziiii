@@ -9,27 +9,25 @@
 {% endblock %} {% block content%}
 <body class="dark">
   <main>
+    <section class="gauge">
+      <div class="chart-gauge"></div>
+      
+    </section>
     <section class="search">
       <form class="search-box" method="POST">
         <input
           type="search"
-          placeholder="Type here... "
+          placeholder="Enter Stock Code... "
           name="query"
           id="query"
-          value="{{query|upper}}"
+          value="{{query}}"
         />
       </form>
     </section>
-    <section class="gauge">
-      <div class="chart-gauge"></div>
-    </section>
-    <section style="align-items: center">
-      <center>{{query|upper}} {{data|safe}}</center>
-    </section>
-<!-- embed plloyly graph here -->
-   
+    <center>
+      <div class="chart">{{chart|safe}}</div>
+    </center>
 
-   {{chart|safe}}
     <div id="hidden" style="display: none">{{res}}</div>
   </main>
 
@@ -47,8 +45,6 @@
         return false;
       }
     });
-
-    
   </script>
 </body>
 {%endblock%}

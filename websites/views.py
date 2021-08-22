@@ -6,6 +6,8 @@ import pandas as pd
 import numpy as np
 from nsetools import Nse
 import plotly.graph_objects as go
+import plotly.io as pio
+pio.templates.default = "plotly_dark"
 
 
 views = Blueprint('views', __name__)
@@ -63,13 +65,13 @@ def stonks(df):
         returnVal+=1
     return returnVal
 
-def chart(df):
+def chart(df,query):
     fig = go.Figure(data=[go.Candlestick(x=df['DATE'],
                 open=df['OPEN'], high=df['HIGH'],
                 low=df['LOW'], close=df['CLOSE'])
                      ])
    
-    fig.update_layout(xaxis_rangeslider_visible=True)
+    fig.update_layout(xaxis_rangeslider_visible=True,title= query+' Stock Price')
     return fig
     
 @views.route('/')
@@ -87,12 +89,13 @@ def stock():
     data=pd.DataFrame()
     res=-1
     if request.method == 'POST':
-        query=request.form.get('query')
-        print(query)
+        query=request.form.get('query').upper()
+        # print(query)
         # data = get_stock_data(query)
         
         if nse.is_valid_code(query)==False:
             flash('Invalid Stock Code',category='error')
+            return render_template('stockstats.html',query=query,data=data,res=res)
             
         elif nse.is_valid_code(query)==True:
             data=stock_df(symbol=query, from_date=date.today()-relativedelta(months=6),to_date=date.today(), series="EQ")
@@ -102,10 +105,10 @@ def stock():
             
            
             print(res)
-
+            return render_template('stockstats.html',query=query,res=res,data=data.to_html(),chart=chart(data,query).to_html())
         
+    return render_template('stockstats.html',query=query,data=data,res=res)
     
-    return render_template('stockstats.html',query=query,res=res,data=data.to_html(),chart=chart(data).to_html())
 
 
 @views.route('/nifty')

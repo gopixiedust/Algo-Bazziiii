@@ -7,7 +7,7 @@ main {
     /* display:block; */
     width: 80vh;
     margin: 5px auto;
-    padding-top: 20vh;
+    padding-top: 2vh;
   }
   
   .search-box {
@@ -88,11 +88,19 @@ main {
   /* gauge */
   .chart-gauge {
     width: 400px;
-    margin: 3vh auto;
+    margin: 16vh auto 1vh auto;
+    padding: 0%;
+    margin-bottom: 0%;
+  }
+  .chart-gauge svg{
+    padding-bottom: 0%;
+    height: 210px;
   }
   
+  
   .chart-color1 {
-    fill: #7DEDFF;
+    fill: #cc3232
+
   }
   
   .chart-color2 {
@@ -100,10 +108,21 @@ main {
   }
   
   .chart-color3 {
-    fill: #2C40D0
+    fill: #2dc937;
   }
   
   .needle,.needle-center{
     z-index: 100;
-    fill: #114467;
+    fill: #C1BDC7
   }
+
+
+  .chart{
+    align-items: center;
+    width: 80%;
+    border-radius: 50%;
+  }
+  .chart .modebar-group:last-child{
+    visibility: hidden;
+  }
+  
