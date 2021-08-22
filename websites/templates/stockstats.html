@@ -7,12 +7,14 @@
   href="{{ url_for('static',filename='styles/stockstats.css')}}"
 />
 {% endblock %} {% block content%}
-<body class="dark">
+<body >
   <main>
     <section class="gauge">
       <div class="chart-gauge"></div>
-      
+
     </section>
+  
+    
     <section class="search">
       <form class="search-box" method="POST">
         <input

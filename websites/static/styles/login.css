@@ -7,6 +7,9 @@ body {
   color: #c4c3ca;
   background-color: #1f2029;
 }
+*, ::after, ::before {
+  box-sizing: border-box;
+}
 
 a {
   cursor: pointer;

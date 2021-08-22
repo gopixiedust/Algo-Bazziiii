@@ -36,14 +36,16 @@ main {
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
     transform: translateY(-3px);
   }
+
+  
   
   @media only screen and (max-width: 1200px) {
     /*Tablets [601px -> 1200px]*/
     .gauge{
-    transform: scale(1.05);
+    transform: scale(0.95);
   }
     .search-box {
-      max-width: 400px;
+      max-width: 500px;
     }
     .search {
       width: 50vh;
@@ -54,12 +56,12 @@ main {
   @media only screen and (max-width: 600px) {
     /*Big smartphones [426px -> 600px]*/
   .gauge{
-    transform: scale(0.9);
+    transform: scale(0.8);
   }
     .search-box {
       max-width: 350px;
       min-width: 200px;
-      margin-top: 6vh;
+      /* margin-top: 6vh; */
     }
     .search {
       width: 40vh;
@@ -69,28 +71,36 @@ main {
   @media only screen and (max-width: 425px) {
     /*Small smartphones [325px -> 425px]*/
   .gauge{
-    transform: scale(0.6);
+    transform: scale(0.75);
+  }
+  .chart-gauge{
+    justify-self: center;
   }
     .search-box {
-      max-width: 200px;
-      min-width: 120px;
-      margin-top: 8vh;
+      max-width: 350px;
+      min-width: 200px;
+      /* margin-top: 8vh; */
     }
     .search-box input {
       font-size: 15px;
     }
     .search {
-      width: 30vh;
-      margin: 5px auto;
+      width: 40vh;
+      margin: 6px auto;
     }
   }
   
+  
   /* gauge */
+  .gauge{
+    align-items: center;
+  }
   .chart-gauge {
     width: 400px;
     margin: 16vh auto 1vh auto;
     padding: 0%;
     margin-bottom: 0%;
+    justify-self: center;
   }
   .chart-gauge svg{
     padding-bottom: 0%;

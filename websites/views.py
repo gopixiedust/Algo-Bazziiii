@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from datetime import  date
 from dateutil.relativedelta import relativedelta
-from jugaad_data.nse import stock_df
+from jugaad_data.nse import stock_df,index_df
 import pandas as pd
 import numpy as np
 from nsetools import Nse
@@ -69,9 +69,17 @@ def chart(df,query):
     fig = go.Figure(data=[go.Candlestick(x=df['DATE'],
                 open=df['OPEN'], high=df['HIGH'],
                 low=df['LOW'], close=df['CLOSE'])
-                     ])
+                     ],responsive= True)
    
-    fig.update_layout(xaxis_rangeslider_visible=True,title= query+' Stock Price')
+    fig.update_layout(xaxis_rangeslider_visible=True,title= query+' Candlestick Plot')
+    return fig
+def nifty_chart(df):
+    fig = go.Figure(data=[go.Candlestick(x=df['HistoricalDate'],
+                open=df['OPEN'], high=df['HIGH'],
+                low=df['LOW'], close=df['CLOSE'])
+                     ])
+    
+    fig.update_layout(xaxis_rangeslider_visible=True,title='Nifty 50 Candlestick Plot')
     return fig
     
 @views.route('/')
@@ -90,20 +98,13 @@ def stock():
     res=-1
     if request.method == 'POST':
         query=request.form.get('query').upper()
-        # print(query)
-        # data = get_stock_data(query)
-        
+
         if nse.is_valid_code(query)==False:
             flash('Invalid Stock Code',category='error')
             return render_template('stockstats.html',query=query,data=data,res=res)
-            
         elif nse.is_valid_code(query)==True:
             data=stock_df(symbol=query, from_date=date.today()-relativedelta(months=6),to_date=date.today(), series="EQ")
-            # chart(data)
-            res=stonks(data)
-            # data=data[:1]
-            
-           
+            res=stonks(data)        
             print(res)
             return render_template('stockstats.html',query=query,res=res,data=data.to_html(),chart=chart(data,query).to_html())
         
@@ -111,9 +112,14 @@ def stock():
     
 
 
-@views.route('/nifty')
+@views.route('/nifty',methods=['GET','POST'])
 def nifty():
-    return render_template('nifty.html')
+    data=pd.DataFrame()
+    # if request.method == 'POST':
+    data=index_df(symbol="NIFTY 50", from_date=date.today()-relativedelta(months=6),to_date=date.today())
+    # print(data)
+    
+    return render_template('nifty.html',chart=nifty_chart(data).to_html())
 
 @views.route('/portfolio')
 def portfolio():

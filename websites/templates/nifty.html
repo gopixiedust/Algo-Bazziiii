@@ -1,8 +1,18 @@
 {% extends "basic.html"%} 
 {% block head%}
 
-<title>Algo</title>
-
+<title>Nifty</title>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static',filename='styles/nifty.css')}}"
+/>
 {% endblock %}
 {% block content%}
+<main>
+    <center>
+      <div class="chart">{{chart|safe}}</div>
+    </center>
+  </main>
+
 {% endblock %}
