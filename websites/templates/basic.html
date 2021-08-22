@@ -14,7 +14,6 @@
       href="{{ url_for('static',filename='styles/style.css') }}"
     />
     {% block head%} {%endblock%}
-   
   </head>
 
   <body class="dark">
@@ -82,39 +81,46 @@
         </div>
       </div>
     </nav>
-    {% block content%} {%endblock%}
-
-     {% with messages =
-    get_flashed_messages(with_categories=true) %}
-     {% if messages %} {% for
+    {% block content%} {%endblock%} {% with messages =
+    get_flashed_messages(with_categories=true) %} {% if messages %} {% for
     category, message in messages %}
-    <div class="alert alert-{{category}} alter-dismissable fade show" role="alert">
+    <div
+      class="alert alert-{{category}} alter-dismissable fade show"
+      role="alert"
+    >
       {{ message }}
       <button type="button" class="close" data-dismiss="alert">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    
+
     {% endfor %} {% endif %} {% endwith %}
     <style>
-        .alert{
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            margin:1vh 2vh;
-            font-size: 20px;
-        }
-        .alert-error{
-            background-color: #f44336;
-        }
-        .alert-success{
-            background-color: #4CAF50;
-        }
+      .alert {
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        margin: 1vh 2vh;
+        font-size: 20px;
+      }
+      .alert-error {
+        background-color: #f44336;
+      }
+      .alert-success {
+        background-color: #4caf50;
+      }
     </style>
     <script src="{{url_for('static', filename='scripts/script.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.3.3/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  
   </body>
+
+
+
+
+
+  
 </html>

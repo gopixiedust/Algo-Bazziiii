@@ -70,7 +70,7 @@ def chart(df):
                      ])
    
     fig.update_layout(xaxis_rangeslider_visible=True)
-    fig.show()
+    return fig
     
 @views.route('/')
 def index():
@@ -96,16 +96,16 @@ def stock():
             
         elif nse.is_valid_code(query)==True:
             data=stock_df(symbol=query, from_date=date.today()-relativedelta(months=6),to_date=date.today(), series="EQ")
-            chart(data)
+            # chart(data)
             res=stonks(data)
-            data=data[:1]
+            # data=data[:1]
             
            
             print(res)
 
         
     
-    return render_template('stockstats.html',query=query,res=res,data=data.to_html())
+    return render_template('stockstats.html',query=query,res=res,data=data.to_html(),chart=chart(data).to_html())
 
 
 @views.route('/nifty')
