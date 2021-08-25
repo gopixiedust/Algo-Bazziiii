@@ -1,14 +1,15 @@
+import time
 from flask import Blueprint,render_template,redirect,url_for,request
 from flask.helpers import flash
 auth = Blueprint('auth', __name__)
-
+from .models import User
 import re
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 def check(email):
-    if(re.match(regex, email)):
-        return True
-    else:
-        return False
+	if(re.match(regex, email) ):
+		return True
+	else:
+		return False
 
 # validate password
 def password_check(passwd):
@@ -43,23 +44,32 @@ def password_check(passwd):
 		return val
 
 
-@auth.route('/login', methods=['GET','POST'])
+@auth.route('/signup', methods=['GET','POST'])
 def login():
-    if request.method == 'POST':
-        email=request.form.get('logemail')
-        password=request.form.get('logpass')
-        print(email,password)
-        if not check(email):
-            flash('Invalid email address', 'error')
-            return redirect(url_for('auth.login'))
-        if not password_check(password):
-            flash('Invalid password', 'error')
-            return redirect(url_for('auth.login'))
-
-        
-    return render_template('login.html')
+	if request.method == 'POST':	
+		email=request.form.get('logemail')
+		password=request.form.get('logpass')
+		print(email,password)
+		username=request.form.get('signname')
+		signemail=request.form.get('signemail')
+		signpass=request.form.get('signpass')
+		print(username,signemail,signpass)
+		if email!=None and password!=None and username==None and signemail==None and signpass==None:
+			if not check(email) :
+				flash('Invalid email address', 'error')
+				return redirect(url_for('auth.login'))
+			if not password_check(password):
+				flash('Invalid password', 'error')
+				return redirect(url_for('auth.login'))
+		
+		# new_user = User(email=email, password=password)
+	return render_template('login.html')
 
 
 @auth.route('/logout')
 def logout():
-    return "<h1>LOGOUT</h1>"
+	# render_template('logout.html')
+	# sleep for 5 seconds
+	time.sleep(2)
+	return redirect(url_for('views.index'))
+
