@@ -9,15 +9,12 @@ import plotly.graph_objects as go
 import plotly.io as pio
 pio.templates.default = "plotly_dark"
 
-
 views = Blueprint('views', __name__)
 nse = Nse()
 
+
 def stonks(df):        
     returnVal=0
-    
-    # df = stock_df(symbol=symbol, from_date=date.today()-relativedelta(months=6),
-    #             to_date=date.today(), series="EQ")
     df.drop(['SERIES', 
         'VWAP', '52W H', '52W L', 'VOLUME', 'VALUE', 'NO OF TRADES', 'SYMBOL'],inplace=True,axis=1)
     df=df[::-1]
@@ -42,7 +39,6 @@ def stonks(df):
     rsidf['avg_loss'] = rma(rsidf.loss[n+1:].to_numpy(), n, np.nansum(rsidf.loss.to_numpy()[:n+1])/n)
     rsidf['rs'] = rsidf.avg_gain / rsidf.avg_loss
     rsidf['rsi_14'] = 100 - (100 / (1 + rsidf.rs))
-
     rsi = rsidf['rsi_14'][99]
     sodf = pd.DataFrame(df[-14::]) # get latest 14 days
     c = sodf['CLOSE'].iloc[-1]
@@ -54,9 +50,7 @@ def stonks(df):
     down = -1*delta.clip(upper=0)
     ema_up = up.ewm(com=13, adjust=True).mean()
     ema_down = down.ewm(com=13, adjust=True).mean()
-    rs = ema_up/ema_down
-    df['RSI'] = 100 - (100/(1 + rs))
-    df.RSI
+    df['RSI'] = 100 - (100/(1 + (ema_up/ema_down)))
     if (ema50>ema100):
         returnVal+=1
     if (rsi<30):
@@ -68,10 +62,10 @@ def stonks(df):
 def chart(df,query):
     fig = go.Figure(data=[go.Candlestick(x=df['DATE'],
                 open=df['OPEN'], high=df['HIGH'],
-                low=df['LOW'], close=df['CLOSE'])
-                     ],responsive= True)
+                low=df['LOW'], close=df['CLOSE'])])
    
-    fig.update_layout(xaxis_rangeslider_visible=True,title= query+' Candlestick Plot')
+    fig.update_layout(xaxis_rangeslider_visible=False,title= query+' Candlestick Plot')
+    
     return fig
 def nifty_chart(df):
     fig = go.Figure(data=[go.Candlestick(x=df['HistoricalDate'],
@@ -79,7 +73,8 @@ def nifty_chart(df):
                 low=df['LOW'], close=df['CLOSE'])
                      ])
     
-    fig.update_layout(xaxis_rangeslider_visible=True,title='Nifty 50 Candlestick Plot')
+    fig.update_layout(xaxis_rangeslider_visible=False,title='Nifty 50 Candlestick Plot')
+    
     return fig
     
 @views.route('/')
@@ -96,29 +91,27 @@ def stock():
     query=""
     data=pd.DataFrame()
     res=-1
+    check=0
     if request.method == 'POST':
         query=request.form.get('query').upper()
 
         if nse.is_valid_code(query)==False:
             flash('Invalid Stock Code',category='error')
-            return render_template('stockstats.html',query=query,data=data,res=res)
+            return render_template('stockstats.html',query=query,data=data,res=res,check=check)
         elif nse.is_valid_code(query)==True:
             data=stock_df(symbol=query, from_date=date.today()-relativedelta(months=6),to_date=date.today(), series="EQ")
-            res=stonks(data)        
-            print(res)
-            return render_template('stockstats.html',query=query,res=res,data=data.to_html(),chart=chart(data,query).to_html())
+            res=stonks(data) 
+            check=1       
+            # print(res)
+            return render_template('stockstats.html',query=query,res=res,chart=chart(data,query).to_html(),check=check)
         
-    return render_template('stockstats.html',query=query,data=data,res=res)
+    return render_template('stockstats.html',query=query,data=data,res=res,check=check)
     
 
 
 @views.route('/nifty',methods=['GET','POST'])
 def nifty():
-    data=pd.DataFrame()
-    # if request.method == 'POST':
-    data=index_df(symbol="NIFTY 50", from_date=date.today()-relativedelta(months=6),to_date=date.today())
-    # print(data)
-    
+    data=index_df(symbol="NIFTY 50", from_date=date.today()-relativedelta(months=6),to_date=date.today())    
     return render_template('nifty.html',chart=nifty_chart(data).to_html())
 
 @views.route('/portfolio')

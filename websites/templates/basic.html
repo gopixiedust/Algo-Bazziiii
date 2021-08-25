@@ -81,7 +81,8 @@
         </div>
       </div>
     </nav>
-    {% block content%} {%endblock%} {% with messages =
+    {% block content%} {%endblock%}
+     {% with messages =
     get_flashed_messages(with_categories=true) %} {% if messages %} {% for
     category, message in messages %}
     <div
@@ -100,8 +101,8 @@
         text-align: center;
         position: fixed;
         bottom: 0;
-        width: 100%;
-        margin: 1vh 2vh;
+        width: 90%;
+        margin: 1vh 5vh;
         font-size: 20px;
       }
       .alert-error {

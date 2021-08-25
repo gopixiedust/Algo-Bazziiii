@@ -1,5 +1,4 @@
-{% extends "basic.html"%} 
-{% block head%}
+{% extends "basic.html"%} {% block head%}
 
 <title>Nifty</title>
 <link
@@ -7,12 +6,17 @@
   type="text/css"
   href="{{ url_for('static',filename='styles/nifty.css')}}"
 />
-{% endblock %}
-{% block content%}
-<main>
-    <center>
+{% endblock %} {% block content%}
+<body>
+  <main>
+    <section>
+      <div class="info">
+        <p>NIFTY 50</p>
+      </div>
+    </section>
+    <section>
       <div class="chart">{{chart|safe}}</div>
-    </center>
+    </section>
   </main>
-
+</body>
 {% endblock %}

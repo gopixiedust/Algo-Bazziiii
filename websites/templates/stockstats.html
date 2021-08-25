@@ -7,14 +7,12 @@
   href="{{ url_for('static',filename='styles/stockstats.css')}}"
 />
 {% endblock %} {% block content%}
-<body >
+<body>
   <main>
     <section class="gauge">
       <div class="chart-gauge"></div>
-
     </section>
-  
-    
+
     <section class="search">
       <form class="search-box" method="POST">
         <input
@@ -29,17 +27,56 @@
     <center>
       <div class="chart">{{chart|safe}}</div>
     </center>
+     <div id="hidden" style="display: none">{{res}}</div>
+   
 
-    <div id="hidden" style="display: none">{{res}}</div>
+<div class="spinner">
+    <div class="load-wrapper" >
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+  </div>
+  
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.3.3/d3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script>
-    // window.onunload = function () {
-    // 	sessionStorage.removeItem('query');
-    // }
+    // $(".load-wrapper").show();
+    // $(".chart").hide();
+    $(".search-box").submit(function (e) {
+      // $(".load-wrapper").show();
+      $(".chart").hide();
+      // e.preventDefault();
+      $(".chart-guage").hide();
+    });
+
+
+    // $("chart").ready(function() {
+    //   $(".chart").show();
+    //   $(".load-wrapper").hide();
+    // });
+
+    // $(document).ready(function() {
+    //   $(".search-box").submit(function(e) {
+    //     // e.preventDefault();
+    //     $(".load-wrapper").show();
+    //     $(".chart").hide();
+    //     // $(".chart-gauge").hide();
+    //     $.ajax({
+    //       url: "{{ url_for('views.stock')}}",
+    //       type: "POST",
+    //       data: {
+    //         query: $("#query").val()
+    //       },
+    //       success: function(data) {
+    //         $(".load-wrapper").hide();
+    //         // $(".chart").show();
+    //         // $(".chart-gauge").show();
+    //         $(".chart").html(data);
+    //       }
+    //     });
+    //   });
+    // });
 
     document.getElementById("form").addEventListener("keyup", function (event) {
       if (event.keyCode === 13) {
@@ -48,5 +85,76 @@
       }
     });
   </script>
+  <style>
+    .spinner{
+      background-color: rgba(0, 0, 0, 0.151);
+      /* display: flex;
+      justify-self: center;
+      align-self: center; */
+    }
+
+    .loader {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      position: relative;
+      border: 4px solid #fff;
+      /* top: 50%; */
+      animation: loader 2s infinite ease;
+     margin:5vh 48%
+    }
+
+    .loader-inner {
+      vertical-align: top;
+      display: inline-block;
+      width: 100%;
+      background-color: #fff;
+      animation: loader-inner 2s infinite ease-in;
+    }
+
+    @keyframes loader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      25% {
+        transform: rotate(180deg);
+      }
+
+      50% {
+        transform: rotate(180deg);
+      }
+
+      75% {
+        transform: rotate(360deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes loader-inner {
+      0% {
+        height: 0%;
+      }
+
+      25% {
+        height: 0%;
+      }
+
+      50% {
+        height: 100%;
+      }
+
+      75% {
+        height: 100%;
+      }
+
+      100% {
+        height: 0%;
+      }
+    }
+  </style>
 </body>
 {%endblock%}

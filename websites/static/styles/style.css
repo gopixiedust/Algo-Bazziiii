@@ -45,6 +45,8 @@ body {
   background-size: 7%;
   overflow-x: hidden;
   transition: all 0.2s linear;
+  
+  
 }
 ::selection {
   color: #fff;

@@ -127,11 +127,11 @@ main {
   }
 
 
-  .chart{
+  /* .chart{
     align-items: center;
     width: 80%;
     border-radius: 50%;
-  }
+  } */
   .chart .modebar-group:last-child{
     visibility: hidden;
   }
